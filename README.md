@@ -30,6 +30,8 @@ https://github.com/mcandre/withd/releases
 * [make](https://www.gnu.org/software/make/)
 * [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports) (e.g. `go get golang.org/x/tools/cmd/goimports`)
 * [gox](https://github.com/mitchellh/gox) (e.g. `go get github.com/mitchellh/gox`)
+* [pargs](https://github.com/mcandre/pargs)
+* [editorconfig-tools](https://www.npmjs.com/package/editorconfig-tools)
 * [shlint](https://rubygems.org/gems/shlint)
 * [shellcheck](http://hackage.haskell.org/package/ShellCheck)
 
