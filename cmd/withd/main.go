@@ -22,24 +22,10 @@ const Usage = `Usage:
     -v --version  Show version information`
 
 func main() {
-	arguments, err := docopt.Parse(Usage, nil, true, withd.Version, false)
-
-	if err != nil {
-		panic(Usage)
-	}
+	arguments, _ := docopt.Parse(Usage, nil, true, withd.Version, false)
 
 	directory, _ := arguments["<chdir>"].(string)
-
-	if directory == "" {
-		panic(Usage)
-	}
-
 	commandString, _ := arguments["<command>"].(string)
-
-	if commandString == "" {
-		panic(Usage)
-	}
-
 	args, _ := arguments["<args>"].([]string)
 
 	command := exec.Command(commandString, args...)

@@ -9,6 +9,9 @@ $ pwd
 $ ls *.txt
 ls *.txt: No such file or directory
 
+$ ls examples/
+names.txt
+
 $ withd examples/ ls *.txt
 names.txt
 
