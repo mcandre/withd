@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"os"
 	"os/exec"
 
 	"github.com/docopt/docopt-go"
@@ -29,13 +29,8 @@ func main() {
 	args, _ := arguments["<args>"].([]string)
 
 	command := exec.Command(commandString, args...)
+	command.Stderr = os.Stderr
+	command.Stdout = os.Stdout
 	command.Dir = directory
-
-	output, err := command.Output()
-
-	if err != nil {
-		panic(err)
-	}
-
-	fmt.Printf("%s", output)
+	command.Run()
 }
