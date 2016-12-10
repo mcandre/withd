@@ -10,6 +10,9 @@ integration-test:
 govet:
 	go list ./... | grep -v vendor | xargs go vet -v
 
+golint:
+	find . -path '*/vendor/*' -prune -o -name '*.go' -type f -exec golint {} \;
+
 gofmt:
 	find . -path '*/vendor/*' -prune -o -name '*.go' -type f -exec gofmt -s -w {} \;
 
@@ -28,7 +31,7 @@ checkbashisms:
 shellcheck:
 	find . \( -wholename '*/node_modules*' \) -prune -o -type f \( -name '*.sh' -o -name '*.bashrc*' -o -name '.*profile*' -o -name '*.envrc*' \) -print | xargs shellcheck
 
-lint: govet gofmt goimport editorconfig shlint checkbashisms shellcheck
+lint: govet golint gofmt goimport editorconfig shlint checkbashisms shellcheck
 
 port: archive-ports
 
