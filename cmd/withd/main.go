@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"os"
 	"os/exec"
 
@@ -32,5 +33,9 @@ func main() {
 	command.Stderr = os.Stderr
 	command.Stdout = os.Stdout
 	command.Dir = directory
-	command.Run()
+	err := command.Run()
+
+	if err != nil {
+		log.Panic(err)
+	}
 }
