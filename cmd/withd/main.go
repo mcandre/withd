@@ -1,3 +1,4 @@
+// Package main provides a withd executable for evaluating commands in a specific current working directory.
 package main
 
 import (
@@ -9,6 +10,7 @@ import (
 	"github.com/mcandre/withd"
 )
 
+// Usage is a docopt-formatted specification of this application's command line interface.
 const Usage = `Usage:
   withd <chdir> <command> [<args>]...
   withd -h
@@ -22,6 +24,7 @@ const Usage = `Usage:
     -h --help     Show usage information
     -v --version  Show version information`
 
+// main is the entrypoint for this application.
 func main() {
 	arguments, _ := docopt.Parse(Usage, nil, true, withd.Version, false)
 
