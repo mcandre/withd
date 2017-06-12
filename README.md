@@ -1,23 +1,44 @@
 # withd - a cross-platform alternative to pushd && command && popd
 
-# EXAMPLE
+# EXAMPLES
 
 ```
 $ pwd
 /Users/andrew/go/src/github.com/mcandre/withd
 
-$ ls *.txt
-ls *.txt: No such file or directory
+$ ls names.txt
+ls names.txt: No such file or directory
 
 $ ls examples/
 names.txt
 
-$ withd examples/ ls *.txt
+$ withd examples/ ls names.txt
 names.txt
+
+$ withd examples/ ls *.txt
+ls: *.txt: No such file or directory
+2017/06/11 22:33:14 exit status 1
+panic: exit status 1
+
+goroutine 1 [running]:
+panic(0xb7820, 0xc420010590)
+        /usr/local/Cellar/go/1.7/libexec/src/runtime/panic.go:500 +0x1a1
+log.Panic(0xc420043f08, 0x1, 0x1)
+        /usr/local/Cellar/go/1.7/libexec/src/log/log.go:320 +0xc9
+main.main()
+        /Users/andrew/go/src/github.com/mcandre/withd/cmd/withd/main.go:46 +0x1ea
 
 $ pwd
 /Users/andrew/go/src/github.com/mcandre/withd
+
+$ withd -help
+  -help
+        Show usage information
+  -version
+        Show version information
 ```
+
+Note: The failure of withd to find `*.txt` in `examples/` is a side effect of how shells expand file pattern globs, which are relative to the current working directory, not the directory specified to `withd`.
 
 # DOWNLOAD
 
