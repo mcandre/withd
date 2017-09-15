@@ -78,7 +78,7 @@ $ go get github.com/mcandre/withd/...
 
 ```
 $ mkdir -p $GOPATH/src/github.com/mcandre
-$ git clone git@github.com:mcandre/withd.git $GOPATH/src/github.com/mcandre/withd
+$ git clone https://github.com/mcandre/withd.git $GOPATH/src/github.com/mcandre/withd
 $ cd $GOPATH/src/github.com/mcandre/withd
 $ git submodule update --init --recursive
 $ sh -c 'cd cmd/withd && go install'
