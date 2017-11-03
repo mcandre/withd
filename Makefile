@@ -22,6 +22,9 @@ goimport:
 errcheck:
 	errcheck -blank
 
+nakedret:
+	nakedret -l 0 ./...
+
 editorconfig:
 	flcl . | xargs -n 100 editorconfig-cli check
 
@@ -34,7 +37,7 @@ checkbashisms:
 shellcheck:
 	find . \( -wholename '*/node_modules*' \) -prune -o -type f \( -name '*.sh' -o -name '*.bashrc*' -o -name '.*profile*' -o -name '*.envrc*' \) -print | xargs shellcheck
 
-lint: govet golint gofmt goimport errcheck editorconfig shlint checkbashisms shellcheck
+lint: govet golint gofmt goimport errcheck nakedret editorconfig shlint checkbashisms shellcheck
 
 port: archive-ports
 
