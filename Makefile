@@ -45,7 +45,7 @@ archive-ports: bin
 	zipc -C bin "withd-$(VERSION).zip" "withd-$(VERSION)"
 
 bin:
-	gox -output="bin/withd-$(VERSION)/{{.OS}}/{{.Arch}}/{{.Dir}}" ./cmd...
+	gox -output="bin/withd-$(VERSION)/{{.OS}}/{{.Arch}}/{{.Dir}}" ./cmd/...
 
 clean: clean-ports
 
