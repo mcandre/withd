@@ -48,24 +48,21 @@ https://github.com/mcandre/withd/releases
 
 https://godoc.org/github.com/mcandre/withd
 
-# REQUIREMENTS
+# RUNTIME REQUIREMENTS
 
-* [Go](https://golang.org) 1.7+ with [$GOPATH configured](https://gist.github.com/mcandre/ef73fb77a825bd153b7836ddbd9a6ddc)
+(None)
 
-## Optional
+# BUILDTIME REQUIREMENTS
 
-* [coreutils](https://www.gnu.org/software/coreutils/coreutils.html)
-* [make](https://www.gnu.org/software/make/)
+* [Go](https://golang.org/) 1.9+
+* [Docker](https://www.docker.com/)
+* [Mage](https://magefile.org/) (e.g., `go get github.com/magefile/mage`)
 * [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports) (e.g. `go get golang.org/x/tools/cmd/goimports`)
 * [golint](https://github.com/golang/lint) (e.g. `go get github.com/golang/lint/golint`)
 * [errcheck](https://github.com/kisielk/errcheck) (e.g. `go get github.com/kisielk/errcheck`)
 * [nakedret](https://github.com/alexkohler/nakedret) (e.g. `go get github.com/alexkohler/nakedret`)
-* [gox](https://github.com/mitchellh/gox) (e.g. `go get github.com/mitchellh/gox`)
-* [pargs](https://github.com/mcandre/pargs)
-* [editorconfig-cli](https://github.com/amyboyd/editorconfig-cli) (e.g. `go get github.com/amyboyd/editorconfig-cli`)
-* [flcl](https://github.com/mcandre/flcl) (e.g. `go get github.com/mcandre/flcl/...`)
-* [shlint](https://rubygems.org/gems/shlint)
-* [shellcheck](http://hackage.haskell.org/package/ShellCheck)
+* [goxcart](https://github.com/mcandre/goxcart) (e.g., `github.com/mcandre/goxcart/...`)
+* [zipc](https://github.com/mcandre/zipc) (e.g. `go get github.com/mcandre/zipc/...`)
 
 # INSTALL FROM REMOTE GIT REPOSITORY
 
@@ -78,23 +75,23 @@ $ go get github.com/mcandre/withd/...
 # INSTALL FROM LOCAL GIT REPOSITORY
 
 ```
-$ mkdir -p $GOPATH/src/github.com/mcandre
-$ git clone https://github.com/mcandre/withd.git $GOPATH/src/github.com/mcandre/withd
-$ cd $GOPATH/src/github.com/mcandre/withd
+$ mkdir -p "$GOPATH/src/github.com/mcandre"
+$ git clone https://github.com/mcandre/withd.git "$GOPATH/src/github.com/mcandre/withd"
+$ cd "$GOPATH/src/github.com/mcandre/withd"
 $ git submodule update --init --recursive
-$ sh -c 'cd cmd/withd && go install'
+$ go install ./...
 ```
 
 # TEST
 
 ```
-$ make integration-test
+$ mage test
 ```
 
 # PORT
 
 ```
-$ make port
+$ mage port
 ```
 
 # LINT
@@ -102,9 +99,5 @@ $ make port
 Keep the code tidy:
 
 ```
-$ make lint
+$ mage lint
 ```
-
-# GIT HOOKS
-
-See `hooks/`.
